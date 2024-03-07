@@ -6,18 +6,22 @@
 */
 
 // Reading in csv file
-const fs = require("fs");
-fs.readFile("states.csv", "utf-8", (err, data) => {
+
+const fs = require('fs');
+
+fs.readFile('states.csv', 'utf-8', (err, data) => {
     if(err) {
         console.log(err);
+        return;
     }
 
-    const array = data.split(',');
-    
-    array.forEach((row, index) => {
-        if(!row.trim()) {
-            return;
+    const arrayLine = data.split('\n');
+
+    arrayLine.forEach((line) => {
+        const part = line.split(',');
+
+        if(part.length > 1) {
+            console.log(part[0]);
         }
-        // console.log something here
     });
 });
